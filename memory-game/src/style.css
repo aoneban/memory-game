@@ -52,6 +52,7 @@
 
 body {
   margin: 0;
+  background-color: burlywood;
 }
 
 h1,
@@ -81,6 +82,39 @@ h2 {
 }
 p {
   margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px 0;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+
+  background-color: #1f2937;
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.btn:hover {
+  background-color: #374151;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  background-color: #111827;
+  transform: translateY(0);
 }
 
 code,
