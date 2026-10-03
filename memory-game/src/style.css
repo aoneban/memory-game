@@ -132,6 +132,15 @@ code {
   background: var(--code-bg);
 }
 
+.cart-wrapper {
+  width: 150px;
+}
+
+.image-cart {
+  width: 100%;
+  height: auto;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -192,13 +201,16 @@ code {
 
 #app {
   width: 1126px;
-  max-width: 100%;
+  max-width: 65%;
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 5%;
   box-sizing: border-box;
 }
 
