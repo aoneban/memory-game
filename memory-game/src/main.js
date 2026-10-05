@@ -1,8 +1,16 @@
+/* eslint-disable prefer-const */
 import './style.css';
 // import javascriptLogo from './assets/javascript.svg';
 // import viteLogo from './assets/vite.svg';
 import { createHeader } from './header.js';
 import { cards } from './data.js';
+
+export let NUMBER_OF_MOVES = 0;
+export let NUMBER_OF_PARES = 0;
+export let FIRST_ATTEMPT = '';
+export let SECOND_ATTEMPT = '';
+export let NAMES = [];
+export let FLAG = false;
 
 createHeader();
 
@@ -15,13 +23,13 @@ const shuffle = (arr) => {
   const random = function (num) {
     return Math.floor(Math.random() * num);
   };
-  const helperArray = Array.from(arr)
+  const helperArray = Array.from(arr);
   const result = [];
 
   for (let i = arr.length; i > 0; i--) {
-    const ran = random(i)
-    const item = helperArray.splice(ran, 1)
-    result.push(item)
+    const ran = random(i);
+    const item = helperArray.splice(ran, 1);
+    result.push(item);
   }
 
   return result.flat();
@@ -35,6 +43,7 @@ const createSingleCart = () => {
   newCards().forEach((card) => {
     const cart = document.createElement('div');
     cart.classList.add('cart', 'hidden');
+    cart.dataset.name = card.name;
 
     const img = document.createElement('img');
     img.classList.add('image-cart');
@@ -45,5 +54,31 @@ const createSingleCart = () => {
     cartWrapper.append(cart);
     app.append(cartWrapper);
   });
-}
+};
 createSingleCart();
+
+const allCards = document.querySelectorAll('.cart');
+allCards.forEach((el) => {
+  el.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (!FLAG) {
+      FIRST_ATTEMPT = event.target.dataset.name;
+      event.target.classList.remove('hidden');
+      FLAG = true;
+    } else {
+      SECOND_ATTEMPT = event.target.dataset.name;
+      event.target.classList.remove('hidden');
+      FLAG = false;
+
+      if (FIRST_ATTEMPT !== SECOND_ATTEMPT) {
+        setTimeout(() => {
+          allCards.forEach((el) => {
+            if (!NAMES.includes(el.dataset.name)) el.classList.add('hidden');
+          });
+        }, 700);
+      } else {
+        NAMES.push(FIRST_ATTEMPT);
+      }
+    }
+  });
+});

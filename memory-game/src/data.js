@@ -46,6 +46,6 @@ export const cards = [
   {
     id: 8,
     src: seehornlImg,
-    name: 'Norris',
+    name: 'Seehorn',
   },
 ];
