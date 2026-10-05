@@ -1,3 +1,5 @@
+import { newGame } from "./main";
+
 export function createHeader() {
   const header = document.getElementById('header');
 
@@ -7,6 +9,7 @@ export function createHeader() {
   const buttonNewGame = document.createElement('button');
   buttonNewGame.classList.add('btn');
   buttonNewGame.textContent = 'New Game';
+  buttonNewGame.addEventListener('click', () => newGame());
 
   const leaderBoard = document.createElement('button');
   leaderBoard.classList.add('btn');

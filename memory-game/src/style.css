@@ -57,7 +57,7 @@ body {
 .container {
   display: flex;
   justify-content: space-evenly;
-  padding: 50px 0;
+  padding: 30px 0 0 0;
 }
 
 .btn {
@@ -106,15 +106,9 @@ body {
   gap: 16px;
 }
 
-/* .hidden {
-  background-color: black;
-  z-index: 1;
-  cursor: pointer;
-} */
-
 .cart {
   position: relative;
-  width: 150px;
+  width: 125px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 12px;

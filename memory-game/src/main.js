@@ -2,8 +2,8 @@
 import './style.css';
 // import javascriptLogo from './assets/javascript.svg';
 // import viteLogo from './assets/vite.svg';
-import { createHeader } from './header.js';
 import { cards } from './data.js';
+import { createHeader } from './header.js';
 
 export let NUMBER_OF_MOVES = 0;
 export let COUNTER_OF_PARES = 0;
@@ -22,19 +22,19 @@ const newCards = () => {
 const headsUpDisplay = () => {
   const app = document.getElementById('app');
   const counter = document.createElement('p');
-  counter.classList.add('counter')
-  counter.textContent = 'Найдено пар: 0';
-  app.append(counter)
-}
+  counter.classList.add('counter');
+  counter.textContent = 'pairs found: 0';
+  app.append(counter);
+};
 headsUpDisplay();
 
 const numbersOfMoves = () => {
   const app = document.getElementById('app');
   const move = document.createElement('p');
-  move.classList.add('move')
-  move.textContent = 'Сделано ходов: 0';
-  app.append(move)
-}
+  move.classList.add('move');
+  move.textContent = 'moves made: 0';
+  app.append(move);
+};
 numbersOfMoves();
 
 const shuffle = (arr) => {
@@ -87,19 +87,19 @@ allCards.forEach((el) => {
       SECOND_ATTEMPT = event.target.dataset.name;
       event.target.classList.remove('hidden');
       FLAG = false;
-      NUMBER_OF_MOVES += 1
-      makeSteps(NUMBER_OF_MOVES)
+      NUMBER_OF_MOVES += 1;
+      makeSteps(NUMBER_OF_MOVES);
 
       if (FIRST_ATTEMPT !== SECOND_ATTEMPT) {
         setTimeout(() => {
           allCards.forEach((el) => {
             if (!NAMES.includes(el.dataset.name)) el.classList.add('hidden');
           });
-        }, 800);
+        }, 700);
       } else {
         NAMES.push(FIRST_ATTEMPT);
-        COUNTER_OF_PARES += 1
-        changeCount(COUNTER_OF_PARES)
+        COUNTER_OF_PARES += 1;
+        changeCount(COUNTER_OF_PARES);
       }
     }
   });
@@ -107,10 +107,19 @@ allCards.forEach((el) => {
 
 const changeCount = (item) => {
   const counter = document.querySelector('.counter');
-  counter.textContent = `Найдено пар: ${item}`
-}
+  counter.textContent = `pairs found: ${item}`;
+};
 
 const makeSteps = (item) => {
   const counter = document.querySelector('.move');
-  counter.textContent = `Сделано ходов: ${item}`
-}
+  counter.textContent = `moves made: ${item}`;
+};
+
+export const newGame = () => {
+  const allCards = document.querySelectorAll('.cart');
+  allCards.forEach((el) => el.classList.add('hidden'));
+  NUMBER_OF_MOVES = 0
+  COUNTER_OF_PARES = 0
+  changeCount(NUMBER_OF_MOVES);
+  makeSteps(COUNTER_OF_PARES);
+};
