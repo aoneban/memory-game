@@ -1,7 +1,5 @@
 /* eslint-disable prefer-const */
 import './style.css';
-// import javascriptLogo from './assets/javascript.svg';
-// import viteLogo from './assets/vite.svg';
 import { cards } from './data.js';
 import { createHeader } from './header.js';
 
@@ -12,7 +10,17 @@ export let SECOND_ATTEMPT = '';
 export let NAMES = [];
 export let FLAG = false;
 
-createHeader();
+const header = document.createElement('header');
+header.id = 'header';
+
+const app = document.createElement('div');
+app.id = 'app';
+
+const footer = document.createElement('footer');
+footer.id = 'footer';
+
+document.body.prepend(header, app, footer);
+createHeader(() => newGame());
 
 const newCards = () => {
   const concatTwoCards = cards.concat(cards);
