@@ -135,6 +135,10 @@ body {
   background: #1f2937;
 }
 
+.counter, .move {
+  width: 50%;
+}
+
 footer {
   height: 100px;
 }

@@ -6,7 +6,7 @@ import { createHeader } from './header.js';
 import { cards } from './data.js';
 
 export let NUMBER_OF_MOVES = 0;
-export let NUMBER_OF_PARES = 0;
+export let COUNTER_OF_PARES = 0;
 export let FIRST_ATTEMPT = '';
 export let SECOND_ATTEMPT = '';
 export let NAMES = [];
@@ -18,6 +18,24 @@ const newCards = () => {
   const concatTwoCards = cards.concat(cards);
   return shuffle(concatTwoCards);
 };
+
+const headsUpDisplay = () => {
+  const app = document.getElementById('app');
+  const counter = document.createElement('p');
+  counter.classList.add('counter')
+  counter.textContent = 'Найдено пар: 0';
+  app.append(counter)
+}
+headsUpDisplay();
+
+const numbersOfMoves = () => {
+  const app = document.getElementById('app');
+  const move = document.createElement('p');
+  move.classList.add('move')
+  move.textContent = 'Сделано ходов: 0';
+  app.append(move)
+}
+numbersOfMoves();
 
 const shuffle = (arr) => {
   const random = function (num) {
@@ -69,16 +87,30 @@ allCards.forEach((el) => {
       SECOND_ATTEMPT = event.target.dataset.name;
       event.target.classList.remove('hidden');
       FLAG = false;
+      NUMBER_OF_MOVES += 1
+      makeSteps(NUMBER_OF_MOVES)
 
       if (FIRST_ATTEMPT !== SECOND_ATTEMPT) {
         setTimeout(() => {
           allCards.forEach((el) => {
             if (!NAMES.includes(el.dataset.name)) el.classList.add('hidden');
           });
-        }, 700);
+        }, 800);
       } else {
         NAMES.push(FIRST_ATTEMPT);
+        COUNTER_OF_PARES += 1
+        changeCount(COUNTER_OF_PARES)
       }
     }
   });
 });
+
+const changeCount = (item) => {
+  const counter = document.querySelector('.counter');
+  counter.textContent = `Найдено пар: ${item}`
+}
+
+const makeSteps = (item) => {
+  const counter = document.querySelector('.move');
+  counter.textContent = `Сделано ходов: ${item}`
+}
