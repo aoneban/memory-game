@@ -7,8 +7,7 @@
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -40,8 +39,7 @@
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
 
   #social .button-icon {
@@ -129,10 +127,73 @@ body {
   background: #1f2937;
 }
 
-.counter, .move {
+.counter,
+.move {
   width: 50%;
 }
 
 footer {
   height: 100px;
+}
+
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  color: #1f2937;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
+}
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 65%);
+}
+
+.modal-panel {
+  padding: 28px;
+}
+
+.modal h2 {
+  margin: 0 0 16px;
+}
+
+.modal-content p {
+  margin: 0;
+}
+
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal .btn:focus-visible {
+  outline: 3px solid #aa3bff;
+  outline-offset: 3px;
+}
+
+.modal table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.modal caption {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.modal th,
+.modal td {
+  padding: 8px;
+  border-bottom: 1px solid #e5e4e7;
 }
